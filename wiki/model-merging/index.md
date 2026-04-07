@@ -1,18 +1,19 @@
 ---
-title: AI — Topic Index
+title: Model Merging — Topic Index
 topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
 
-# AI
+# Model Merging
 
-> Artificial intelligence and machine learning concepts, methods, and systems.
+> Techniques for combining multiple fine-tuned models into a single multi-task model without retraining, and related concepts around task vectors, interference, and subspace analysis.
 
 ## Pages
 
 | Page | Summary |
 |------|---------|
+| [[model-merging/index]] | *(this page)* Topic index |
 | [[model-merging/model-merging]] | Combining fine-tuned model weights into a single multi-task model without retraining |
 | [[model-merging/task-vectors]] | Weight-space differences between fine-tuned and pre-trained models; foundation of Task Arithmetic |
 | [[model-merging/task-interference]] | Destructive interaction when overlapping task directions are merged; metrics and mitigations |

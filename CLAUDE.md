@@ -67,6 +67,11 @@ Main body. Use sections as needed.
 - link generously but not repeatedly within the same paragraph
 - when adding a link to page A pointing to page B, add A to B's backlinks
 
+### Index pages
+- every topic directory has an `index.md` that lists all pages in that topic
+- in the `## Pages` table, `index.md` is always the first row: `| [[topic/index]] | *(this page)* Topic index |`
+- the root `wiki/index.md` links to each topic via `[[topic/index]]`
+
 ### Summaries
 - every page opens with a blockquote summary after the title
 - write summaries last, after content is complete
