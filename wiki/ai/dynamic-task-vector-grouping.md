@@ -1,3 +1,10 @@
+---
+title: Dynamic Task Vector Grouping (DTVG)
+topic: ai
+created: 2026-04-07
+updated: 2026-04-07
+---
+
 # Dynamic Task Vector Grouping (DTVG)
 
 > A multi-task prompt tuning method that dynamically selects and merges a subset of source tasks to improve low-resource target task performance. Unlike methods that transfer from one or all source tasks, DTVG groups a subset using target similarity and knowledge consistency metrics, updating the group at each training iteration.
@@ -10,12 +17,12 @@ In multi-task prompt tuning, soft prompts learned on high-resource source tasks 
 - **One-for-one**: Transfer the prompt from the single most similar source task
 - **All-for-one**: Learn a shared prompt from all source tasks
 
-DTVG shows that neither extreme is optimal — the best transfer comes from a **subset** of source tasks, and the optimal subset **changes during training**.
+DTVG shows that neither extreme is optimal — the best transfer comes from a **subset** of source tasks, and the optimal subset **changes during training** as the target prompt converges.
 
 ### Method
 
 #### Stage 1: Task Prompt Vector Learning
-Each source and target task is individually prompt-tuned from a shared initialization P_init. The task prompt vector (TPV) is defined as T = P_learned − P_init, analogous to [[task-vectors]] in weight space.
+Each source and target task is individually prompt-tuned from a shared initialization P_init. The task prompt vector (TPV) is defined as T = P_learned − P_init, analogous to [[ai/task-vectors]] in weight space.
 
 #### Stage 2: Multi-task Prompt Transfer (Iterative)
 
@@ -36,19 +43,18 @@ The group is dynamically updated each iteration. In practice, grouping stabilize
 
 ### Relationship to Model Merging
 
-DTVG applies [[task-vectors]] arithmetic in prompt space rather than full weight space. While [[model-merging]] methods like [[task-singular-vectors]] and [[isotropic-model-merging]] merge full model weights post-hoc, DTVG merges during training and operates only on the small prompt parameter space. The [[task-interference]] problem appears in both settings — DTVG addresses it through selective grouping rather than SVD-based decorrelation.
+DTVG applies [[ai/task-vectors]] arithmetic in prompt space rather than full weight space. While [[ai/model-merging]] methods like [[ai/task-singular-vectors]] and [[ai/isotropic-model-merging]] merge full model weights post-hoc, DTVG merges during training and operates only on the small prompt parameter space. The [[ai/task-interference]] problem appears in both settings — DTVG addresses it through selective grouping rather than SVD-based decorrelation.
 
 ## See Also
 
-- [[task-vectors]]
-- [[model-merging]]
-- [[task-interference]]
+- [[ai/task-vectors]]
+- [[ai/model-merging]]
+- [[ai/task-interference]]
 
 ## Backlinks
 
-<!-- AUTO: pages that link to this one -->
-- [[model-merging]]
-- [[task-vectors]]
+- [[ai/model-merging]]
+- [[ai/task-vectors]]
 
 ## Sources
 

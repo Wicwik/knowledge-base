@@ -1,6 +1,13 @@
+---
+title: Task Interference
+topic: ai
+created: 2026-04-07
+updated: 2026-04-07
+---
+
 # Task Interference
 
-> When task vectors from different tasks share overlapping directions in weight space, merging them causes destructive interaction — degrading performance on individual tasks. Measuring and reducing this interference is the central challenge in [[model-merging]].
+> When task vectors from different tasks share overlapping directions in weight space, merging them causes destructive interaction — degrading performance on individual tasks. Measuring and reducing this interference is the central challenge in [[ai/model-merging]].
 
 ## Content
 
@@ -15,20 +22,20 @@ Task interference occurs because the weight updates learned for different tasks 
 
 **Cosine similarity** between flattened task vectors was the original metric (Ilharco et al., 2023), but it provides only a coarse, global view.
 
-**Singular Task Interference (STI)** from [[task-singular-vectors]] provides a layer-level measure based on the alignment of left and right singular vectors across tasks:
+**Singular Task Interference (STI)** from [[ai/task-singular-vectors]] provides a layer-level measure based on the alignment of left and right singular vectors across tasks:
 
 STI({Δᵢ}) = ‖(U^T U − I) Σ (V^T V − I)‖₁
 
 High off-diagonal values in U^T U or V^T V indicate overlapping singular subspaces and thus higher interference. STI reveals that interference is highest in early transformer layers (which capture shared features) and lowest in deeper, more specialized layers.
 
-**[[subspace-alignment]] Ratio (SAR)** from [[isotropic-model-merging]] measures how well the merged matrix's top singular vectors cover each individual task's subspace. Low SAR for a task means the merged model underrepresents that task.
+**[[ai/subspace-alignment]] Ratio (SAR)** from [[ai/isotropic-model-merging]] measures how well the merged matrix's top singular vectors cover each individual task's subspace. Low SAR for a task means the merged model underrepresents that task.
 
 ### Reducing Interference
 
 - **TIES Merging**: Trims low-magnitude values, resolves sign conflicts.
 - **Consensus Merging**: Keeps only parameter directions where all tasks agree.
-- **TSV-M** ([[task-singular-vectors]]): Low-rank compression followed by whitening transformation to decorrelate singular vectors across tasks.
-- **Iso-C / Iso-CTS** ([[isotropic-model-merging]]): Flattens the singular value spectrum to equalize representation of all task directions.
+- **TSV-M** ([[ai/task-singular-vectors]]): Low-rank compression followed by whitening transformation to decorrelate singular vectors across tasks.
+- **Iso-C / Iso-CTS** ([[ai/isotropic-model-merging]]): Flattens the singular value spectrum to equalize representation of all task directions.
 
 ### Key Insight
 
@@ -36,21 +43,20 @@ Combining low-rank compression with interference reduction is synergistic: low-r
 
 ## See Also
 
-- [[model-merging]]
-- [[task-vectors]]
-- [[task-singular-vectors]]
-- [[isotropic-model-merging]]
-- [[subspace-alignment]]
+- [[ai/model-merging]]
+- [[ai/task-vectors]]
+- [[ai/task-singular-vectors]]
+- [[ai/isotropic-model-merging]]
+- [[ai/subspace-alignment]]
 
 ## Backlinks
 
-<!-- AUTO: pages that link to this one -->
-- [[dynamic-task-vector-grouping]]
-- [[isotropic-model-merging]]
-- [[model-merging]]
-- [[subspace-alignment]]
-- [[task-singular-vectors]]
-- [[task-vectors]]
+- [[ai/dynamic-task-vector-grouping]]
+- [[ai/isotropic-model-merging]]
+- [[ai/model-merging]]
+- [[ai/subspace-alignment]]
+- [[ai/task-singular-vectors]]
+- [[ai/task-vectors]]
 
 ## Sources
 

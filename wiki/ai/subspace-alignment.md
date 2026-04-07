@@ -1,3 +1,10 @@
+---
+title: Subspace Alignment
+topic: ai
+created: 2026-04-07
+updated: 2026-04-07
+---
+
 # Subspace Alignment
 
 > The degree of overlap between the principal singular vector subspaces of individual task matrices and the merged matrix. High alignment correlates strongly with good merged-model performance; low alignment indicates a task is underrepresented in the merge.
@@ -6,7 +13,7 @@
 
 ### Subspace Alignment Ratio (SAR)
 
-Introduced in the [[isotropic-model-merging]] paper, SAR measures how much of a task matrix's energy is captured by the top singular vectors of the merged matrix:
+Introduced in the [[ai/isotropic-model-merging]] paper, SAR measures how much of a task matrix's energy is captured by the top singular vectors of the merged matrix:
 
 SAR(Δₜ, Δ_M; k_M) = ‖Π_{k_M} Δₜ‖_F / ‖Δₜ‖_F
 
@@ -28,22 +35,21 @@ Flattening the singular value spectrum (Iso-C) increases the effective number of
 
 ### Relationship to Task Interference
 
-SAR and [[task-interference]] are complementary perspectives. STI from [[task-singular-vectors]] measures how much singular vectors from different tasks overlap (causing interference), while SAR measures how well each task's subspace is represented in the merged result. Reducing interference and improving alignment are two sides of the same coin.
+SAR and [[ai/task-interference]] are complementary perspectives. STI from [[ai/task-singular-vectors]] measures how much singular vectors from different tasks overlap (causing interference), while SAR measures how well each task's subspace is represented in the merged result. Reducing interference and improving alignment are two sides of the same coin.
 
 ## See Also
 
-- [[isotropic-model-merging]]
-- [[task-interference]]
-- [[task-singular-vectors]]
-- [[model-merging]]
+- [[ai/isotropic-model-merging]]
+- [[ai/task-interference]]
+- [[ai/task-singular-vectors]]
+- [[ai/model-merging]]
 
 ## Backlinks
 
-<!-- AUTO: pages that link to this one -->
-- [[model-merging]]
-- [[task-interference]]
-- [[task-singular-vectors]]
-- [[isotropic-model-merging]]
+- [[ai/model-merging]]
+- [[ai/task-interference]]
+- [[ai/task-singular-vectors]]
+- [[ai/isotropic-model-merging]]
 
 ## Sources
 
