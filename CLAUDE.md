@@ -68,9 +68,9 @@ Main body. Use sections as needed.
 - when adding a link to page A pointing to page B, add A to B's backlinks
 
 ### Index pages
-- every topic directory has an `index.md` that lists all pages in that topic
-- in the `## Pages` table, `index.md` is always the first row: `| [[topic/index]] | *(this page)* Topic index |`
-- the root `wiki/index.md` links to each topic via `[[topic/index]]`
+- every topic directory has a `_index.md` (underscore-prefixed so Obsidian lists it first)
+- in the `## Pages` table, `_index.md` is always the first row: `| [[topic/_index]] | *(this page)* Topic index |`
+- the root `wiki/_index.md` links to each topic via `[[topic/_index]]`
 
 ### Summaries
 - every page opens with a blockquote summary after the title

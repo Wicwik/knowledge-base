@@ -13,7 +13,7 @@ updated: 2026-04-07
 
 | Page | Summary |
 |------|---------|
-| [[model-merging/index]] | *(this page)* Topic index |
+| [[model-merging/_index]] | *(this page)* Topic index |
 | [[model-merging/model-merging]] | Combining fine-tuned model weights into a single multi-task model without retraining |
 | [[model-merging/task-vectors]] | Weight-space differences between fine-tuned and pre-trained models; foundation of Task Arithmetic |
 | [[model-merging/task-interference]] | Destructive interaction when overlapping task directions are merged; metrics and mitigations |

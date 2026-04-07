@@ -4,7 +4,7 @@
 
 | Topic | Description |
 |-------|-------------|
-| [[model-merging/index]] | Weight-space model merging — task vectors, SVD methods, interference reduction, isotropic merging |
+| [[model-merging/_index]] | Weight-space model merging — task vectors, SVD methods, interference reduction, isotropic merging |
 
 ---
 
