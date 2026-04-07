@@ -1,6 +1,6 @@
 ---
 title: Model Merging
-topic: ai
+topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
@@ -24,15 +24,15 @@ performs well on all T tasks.
 ### Key Methods
 
 - **Weight Averaging**: Simply average all fine-tuned weights. Surprisingly effective as a baseline.
-- **[[ai/task-vectors]]** (Task Arithmetic): Compute task vectors τᵢ = θₜ − θ₀, then combine as θ_M = θ₀ + α·mean(τᵢ). Introduced by Ilharco et al. (2023).
+- **[[model-merging/task-vectors]]** (Task Arithmetic): Compute task vectors τᵢ = θₜ − θ₀, then combine as θ_M = θ₀ + α·mean(τᵢ). Introduced by Ilharco et al. (2023).
 - **TIES Merging**: Resolves sign conflicts in task vectors before averaging, trimming low-magnitude parameters.
 - **Consensus Merging**: Retains only parameter updates where tasks agree on the direction of change.
-- **[[ai/task-singular-vectors]]** (TSV-M): Decomposes per-layer task matrices via SVD, compresses, and decorrelates singular vectors to reduce [[ai/task-interference]].
-- **[[ai/isotropic-model-merging]]** (Iso-C / Iso-CTS): Flattens the singular value spectrum of merged task matrices to improve [[ai/subspace-alignment]] across tasks.
+- **[[model-merging/task-singular-vectors]]** (TSV-M): Decomposes per-layer task matrices via SVD, compresses, and decorrelates singular vectors to reduce [[model-merging/task-interference]].
+- **[[model-merging/isotropic-model-merging]]** (Iso-C / Iso-CTS): Flattens the singular value spectrum of merged task matrices to improve [[model-merging/subspace-alignment]] across tasks.
 
 ### Why It Works
 
-Fine-tuned models from a shared pre-trained checkpoint tend to lie in a connected low-loss basin. Task-specific weight changes are often approximately orthogonal, meaning they occupy different subspaces and can be superimposed without catastrophic interference — though reducing the remaining [[ai/task-interference]] is the focus of recent methods.
+Fine-tuned models from a shared pre-trained checkpoint tend to lie in a connected low-loss basin. Task-specific weight changes are often approximately orthogonal, meaning they occupy different subspaces and can be superimposed without catastrophic interference — though reducing the remaining [[model-merging/task-interference]] is the focus of recent methods.
 
 ### Evaluation
 
@@ -40,21 +40,21 @@ Standard benchmarks merge CLIP ViT models fine-tuned on 8, 14, or 20 vision clas
 
 ## See Also
 
-- [[ai/task-vectors]]
-- [[ai/task-interference]]
-- [[ai/task-singular-vectors]]
-- [[ai/isotropic-model-merging]]
-- [[ai/subspace-alignment]]
-- [[ai/dynamic-task-vector-grouping]]
+- [[model-merging/task-vectors]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/isotropic-model-merging]]
+- [[model-merging/subspace-alignment]]
+- [[model-merging/dynamic-task-vector-grouping]]
 
 ## Backlinks
 
-- [[ai/dynamic-task-vector-grouping]]
-- [[ai/isotropic-model-merging]]
-- [[ai/subspace-alignment]]
-- [[ai/task-interference]]
-- [[ai/task-singular-vectors]]
-- [[ai/task-vectors]]
+- [[model-merging/dynamic-task-vector-grouping]]
+- [[model-merging/isotropic-model-merging]]
+- [[model-merging/subspace-alignment]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/task-vectors]]
 
 ## Sources
 

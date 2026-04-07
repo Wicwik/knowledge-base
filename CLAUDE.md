@@ -20,7 +20,8 @@
 
 ## Wiki Structure
 
-- `wiki/` is organized into topic subdirectories (e.g. `wiki/ai/`, `wiki/physics/`)
+- `wiki/` is organized into topic subdirectories named after specific research areas or projects (e.g. `wiki/model-merging/`, `wiki/diffusion-models/`, `wiki/prompt-tuning/`)
+- Topics should be narrow and project-oriented, not broad disciplines (not `wiki/ai/`, `wiki/math/`)
 - Each topic directory has its own `index.md` listing all pages in that topic
 - The root `wiki/index.md` lists all topics with a one-line description each
 - Place a concept in the most specific relevant topic
@@ -62,7 +63,7 @@ Main body. Use sections as needed.
 - one concept per page, prefer narrow and specific over broad
 
 ### Cross-Linking
-- use full paths in wikilinks: `[[ai/transformers]]` not `[[transformers]]`
+- use full paths in wikilinks: `[[model-merging/task-vectors]]` not `[[task-vectors]]`
 - link generously but not repeatedly within the same paragraph
 - when adding a link to page A pointing to page B, add A to B's backlinks
 

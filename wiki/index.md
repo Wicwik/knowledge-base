@@ -4,7 +4,7 @@
 
 | Topic | Description |
 |-------|-------------|
-| [[ai/index]] | Artificial intelligence and machine learning — model merging, task vectors, SVD-based methods |
+| [[model-merging/index]] | Weight-space model merging — task vectors, SVD methods, interference reduction, isotropic merging |
 
 ---
 

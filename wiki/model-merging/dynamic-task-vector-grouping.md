@@ -1,6 +1,6 @@
 ---
 title: Dynamic Task Vector Grouping (DTVG)
-topic: ai
+topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
@@ -22,7 +22,7 @@ DTVG shows that neither extreme is optimal — the best transfer comes from a **
 ### Method
 
 #### Stage 1: Task Prompt Vector Learning
-Each source and target task is individually prompt-tuned from a shared initialization P_init. The task prompt vector (TPV) is defined as T = P_learned − P_init, analogous to [[ai/task-vectors]] in weight space.
+Each source and target task is individually prompt-tuned from a shared initialization P_init. The task prompt vector (TPV) is defined as T = P_learned − P_init, analogous to [[model-merging/task-vectors]] in weight space.
 
 #### Stage 2: Multi-task Prompt Transfer (Iterative)
 
@@ -43,18 +43,18 @@ The group is dynamically updated each iteration. In practice, grouping stabilize
 
 ### Relationship to Model Merging
 
-DTVG applies [[ai/task-vectors]] arithmetic in prompt space rather than full weight space. While [[ai/model-merging]] methods like [[ai/task-singular-vectors]] and [[ai/isotropic-model-merging]] merge full model weights post-hoc, DTVG merges during training and operates only on the small prompt parameter space. The [[ai/task-interference]] problem appears in both settings — DTVG addresses it through selective grouping rather than SVD-based decorrelation.
+DTVG applies [[model-merging/task-vectors]] arithmetic in prompt space rather than full weight space. While [[model-merging/model-merging]] methods like [[model-merging/task-singular-vectors]] and [[model-merging/isotropic-model-merging]] merge full model weights post-hoc, DTVG merges during training and operates only on the small prompt parameter space. The [[model-merging/task-interference]] problem appears in both settings — DTVG addresses it through selective grouping rather than SVD-based decorrelation.
 
 ## See Also
 
-- [[ai/task-vectors]]
-- [[ai/model-merging]]
-- [[ai/task-interference]]
+- [[model-merging/task-vectors]]
+- [[model-merging/model-merging]]
+- [[model-merging/task-interference]]
 
 ## Backlinks
 
-- [[ai/model-merging]]
-- [[ai/task-vectors]]
+- [[model-merging/model-merging]]
+- [[model-merging/task-vectors]]
 
 ## Sources
 

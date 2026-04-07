@@ -1,19 +1,19 @@
 ---
 title: Isotropic Model Merging
-topic: ai
+topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
 
 # Isotropic Model Merging
 
-> A [[ai/model-merging]] framework that flattens (makes isotropic) the singular value spectrum of merged task matrices. Iso-C equalizes the common subspace; Iso-CTS additionally incorporates task-specific subspaces for directions underrepresented in the common space. Achieves state-of-the-art on vision and language merging benchmarks (ICML 2025).
+> A [[model-merging/model-merging]] framework that flattens (makes isotropic) the singular value spectrum of merged task matrices. Iso-C equalizes the common subspace; Iso-CTS additionally incorporates task-specific subspaces for directions underrepresented in the common space. Achieves state-of-the-art on vision and language merging benchmarks (ICML 2025).
 
 ## Content
 
 ### Motivation
 
-When task matrices are summed (Task Arithmetic), the resulting merged matrix has a skewed singular value spectrum — a few dominant directions dominate while others are suppressed. This means tasks whose important directions align with the dominant ones perform well, while tasks with orthogonal or weaker directions are left behind. The key finding: **[[ai/subspace-alignment]] between task-specific and merged matrices strongly correlates with merged model performance** (Pearson ρ = 0.94).
+When task matrices are summed (Task Arithmetic), the resulting merged matrix has a skewed singular value spectrum — a few dominant directions dominate while others are suppressed. This means tasks whose important directions align with the dominant ones perform well, while tasks with orthogonal or weaker directions are left behind. The key finding: **[[model-merging/subspace-alignment]] between task-specific and merged matrices strongly correlates with merged model performance** (Pearson ρ = 0.94).
 
 ### Iso-C (Common Subspace)
 
@@ -22,7 +22,7 @@ When task matrices are summed (Task Arithmetic), the resulting merged matrix has
 3. Replace all singular values with their mean: σ̄ = (1/r)·Σσᵢ
 4. Reconstruct: Δ_Iso-C = σ̄ · U · Vᵀ
 
-This simple operation — replacing the spectrum with a flat one while keeping the singular vectors — substantially improves [[ai/subspace-alignment]] and accuracy. It equalizes representation across all tasks in the shared subspace.
+This simple operation — replacing the spectrum with a flat one while keeping the singular vectors — substantially improves [[model-merging/subspace-alignment]] and accuracy. It equalizes representation across all tasks in the shared subspace.
 
 Implementation in `raw/iso-merging/src/utils/iso.py`: averages the task matrices per layer, computes SVD, then reconstructs with `S_mean = ones_like(S) * S.mean()`.
 
@@ -62,20 +62,20 @@ The reference implementation is in `raw/iso-merging/`. Key files:
 
 ## See Also
 
-- [[ai/model-merging]]
-- [[ai/task-vectors]]
-- [[ai/task-singular-vectors]]
-- [[ai/task-interference]]
-- [[ai/subspace-alignment]]
+- [[model-merging/model-merging]]
+- [[model-merging/task-vectors]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/task-interference]]
+- [[model-merging/subspace-alignment]]
 
 ## Backlinks
 
-- [[ai/dynamic-task-vector-grouping]]
-- [[ai/model-merging]]
-- [[ai/subspace-alignment]]
-- [[ai/task-interference]]
-- [[ai/task-singular-vectors]]
-- [[ai/task-vectors]]
+- [[model-merging/dynamic-task-vector-grouping]]
+- [[model-merging/model-merging]]
+- [[model-merging/subspace-alignment]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/task-vectors]]
 
 ## Sources
 

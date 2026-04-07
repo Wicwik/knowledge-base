@@ -1,6 +1,6 @@
 ---
 title: Subspace Alignment
-topic: ai
+topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
@@ -13,7 +13,7 @@ updated: 2026-04-07
 
 ### Subspace Alignment Ratio (SAR)
 
-Introduced in the [[ai/isotropic-model-merging]] paper, SAR measures how much of a task matrix's energy is captured by the top singular vectors of the merged matrix:
+Introduced in the [[model-merging/isotropic-model-merging]] paper, SAR measures how much of a task matrix's energy is captured by the top singular vectors of the merged matrix:
 
 SAR(Δₜ, Δ_M; k_M) = ‖Π_{k_M} Δₜ‖_F / ‖Δₜ‖_F
 
@@ -35,21 +35,21 @@ Flattening the singular value spectrum (Iso-C) increases the effective number of
 
 ### Relationship to Task Interference
 
-SAR and [[ai/task-interference]] are complementary perspectives. STI from [[ai/task-singular-vectors]] measures how much singular vectors from different tasks overlap (causing interference), while SAR measures how well each task's subspace is represented in the merged result. Reducing interference and improving alignment are two sides of the same coin.
+SAR and [[model-merging/task-interference]] are complementary perspectives. STI from [[model-merging/task-singular-vectors]] measures how much singular vectors from different tasks overlap (causing interference), while SAR measures how well each task's subspace is represented in the merged result. Reducing interference and improving alignment are two sides of the same coin.
 
 ## See Also
 
-- [[ai/isotropic-model-merging]]
-- [[ai/task-interference]]
-- [[ai/task-singular-vectors]]
-- [[ai/model-merging]]
+- [[model-merging/isotropic-model-merging]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/model-merging]]
 
 ## Backlinks
 
-- [[ai/model-merging]]
-- [[ai/task-interference]]
-- [[ai/task-singular-vectors]]
-- [[ai/isotropic-model-merging]]
+- [[model-merging/model-merging]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/isotropic-model-merging]]
 
 ## Sources
 

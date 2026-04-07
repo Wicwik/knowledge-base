@@ -1,13 +1,13 @@
 ---
 title: Task Singular Vectors (TSV)
-topic: ai
+topic: model-merging
 created: 2026-04-07
 updated: 2026-04-07
 ---
 
 # Task Singular Vectors (TSV)
 
-> A model merging framework that decomposes per-layer task matrices via SVD, revealing that they are low-rank. TSV-Compress (TSV-C) shrinks task vectors to 10% of their size while retaining 99% accuracy. TSV-Merge (TSV-M) combines compression with a whitening-based decorrelation step that reduces [[ai/task-interference]], achieving ~15% accuracy gains over standard [[ai/task-vectors]].
+> A model merging framework that decomposes per-layer task matrices via SVD, revealing that they are low-rank. TSV-Compress (TSV-C) shrinks task vectors to 10% of their size while retaining 99% accuracy. TSV-Merge (TSV-M) combines compression with a whitening-based decorrelation step that reduces [[model-merging/task-interference]], achieving ~15% accuracy gains over standard [[model-merging/task-vectors]].
 
 ## Content
 
@@ -15,7 +15,7 @@ updated: 2026-04-07
 
 Instead of treating task vectors as flat vectors, TSV preserves the matrix structure of each layer and applies Singular Value Decomposition. The resulting singular vectors — termed Task Singular Vectors — reveal:
 1. Per-layer task matrices are **low-rank**: ~3% of singular components capture nearly all task-specific information.
-2. The **alignment of singular vectors** across tasks determines the degree of [[ai/task-interference]].
+2. The **alignment of singular vectors** across tasks determines the degree of [[model-merging/task-interference]].
 
 ### TSV-Compress (TSV-C)
 
@@ -54,24 +54,24 @@ The method consistently achieves best results with α=1.0 (no scaling needed), e
 
 ### Relationship to Iso-CTS
 
-[[ai/isotropic-model-merging]] builds on TSV's insights, sharing the SVD decomposition and whitening steps but adding isotropic scaling (flattening singular values) and an explicit common+task-specific subspace decomposition for further gains, especially at 20+ tasks.
+[[model-merging/isotropic-model-merging]] builds on TSV's insights, sharing the SVD decomposition and whitening steps but adding isotropic scaling (flattening singular values) and an explicit common+task-specific subspace decomposition for further gains, especially at 20+ tasks.
 
 ## See Also
 
-- [[ai/model-merging]]
-- [[ai/task-vectors]]
-- [[ai/task-interference]]
-- [[ai/isotropic-model-merging]]
-- [[ai/subspace-alignment]]
+- [[model-merging/model-merging]]
+- [[model-merging/task-vectors]]
+- [[model-merging/task-interference]]
+- [[model-merging/isotropic-model-merging]]
+- [[model-merging/subspace-alignment]]
 
 ## Backlinks
 
-- [[ai/dynamic-task-vector-grouping]]
-- [[ai/isotropic-model-merging]]
-- [[ai/model-merging]]
-- [[ai/subspace-alignment]]
-- [[ai/task-interference]]
-- [[ai/task-vectors]]
+- [[model-merging/dynamic-task-vector-grouping]]
+- [[model-merging/isotropic-model-merging]]
+- [[model-merging/model-merging]]
+- [[model-merging/subspace-alignment]]
+- [[model-merging/task-interference]]
+- [[model-merging/task-vectors]]
 
 ## Sources
 
