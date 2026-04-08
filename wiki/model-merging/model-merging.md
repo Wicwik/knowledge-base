@@ -2,7 +2,7 @@
 title: Model Merging
 topic: model-merging
 created: 2026-04-07
-updated: 2026-04-07
+updated: 2026-04-08
 ---
 
 # Model Merging
@@ -25,8 +25,8 @@ performs well on all T tasks.
 
 - **Weight Averaging**: Simply average all fine-tuned weights. Surprisingly effective as a baseline.
 - **[[model-merging/task-vectors]]** (Task Arithmetic): Compute task vectors τᵢ = θₜ − θ₀, then combine as θ_M = θ₀ + α·mean(τᵢ). Introduced by Ilharco et al. (2023).
-- **TIES Merging**: Resolves sign conflicts in task vectors before averaging, trimming low-magnitude parameters.
-- **Consensus Merging**: Retains only parameter updates where tasks agree on the direction of change.
+- **TIES Merging** (Yadav et al., 2023): Three-step process — (1) trim parameters with low-magnitude updates (below a threshold), (2) resolve sign conflicts by majority vote across tasks, (3) average only the parameters that agree on sign. Substantially reduces interference compared to naive averaging.
+- **Consensus Merging** (Wang et al., 2024): Removes a parameter's update entirely if fewer than k tasks assign it non-negligible magnitude, keeping only parameters with broad task consensus. Treats parameters where tasks disagree as noise rather than signal.
 - **[[model-merging/task-singular-vectors]]** (TSV-M): Decomposes per-layer task matrices via SVD, compresses, and decorrelates singular vectors to reduce [[model-merging/task-interference]].
 - **[[model-merging/isotropic-model-merging]]** (Iso-C / Iso-CTS): Flattens the singular value spectrum of merged task matrices to improve [[model-merging/subspace-alignment]] across tasks.
 

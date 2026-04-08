@@ -50,6 +50,8 @@ DTVG applies [[model-merging/task-vectors]] arithmetic in prompt space rather th
 - [[model-merging/task-vectors]]
 - [[model-merging/model-merging]]
 - [[model-merging/task-interference]]
+- [[model-merging/task-singular-vectors]]
+- [[model-merging/isotropic-model-merging]]
 
 ## Backlinks
 

@@ -2,7 +2,7 @@
 title: Task Vectors
 topic: model-merging
 created: 2026-04-07
-updated: 2026-04-07
+updated: 2026-04-08
 ---
 
 # Task Vectors
@@ -26,6 +26,22 @@ The multi-task model is constructed by adding a scaled average of task vectors b
 θ_MT = θ_pre + α · (1/T) · Σ τᵢ
 
 where α is a scaling coefficient typically tuned on a validation set. Ilharco et al. (2023) showed this surprisingly effective despite its simplicity.
+
+### Algebraic Operations
+
+Task vectors support three algebraic operations beyond simple addition:
+
+**Negation** — subtracting a task vector causes the merged model to *forget* that task, degrading performance on it toward random chance:
+
+θ_neg = θ_pre − α · τᵢ
+
+Useful for removing unwanted capabilities (e.g., harmful content) without retraining.
+
+**Composition** — task vectors from unrelated tasks can be added independently; their contributions are approximately orthogonal and do not cancel. This is why simple Task Arithmetic works at all.
+
+**Cancellation** — task vectors from conflicting or similar tasks partially cancel when summed, causing [[model-merging/task-interference]]. This is the failure mode that methods like TIES, TSV-M, and Iso-CTS address.
+
+These operations imply that weight space has meaningful geometric structure: task directions are (approximately) linear and separable, making arithmetic over models possible.
 
 ### Layer-Level View
 

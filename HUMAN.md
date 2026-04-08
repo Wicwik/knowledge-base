@@ -8,17 +8,17 @@ Observations and suggestions for the wiki owner.
 
 ### Pages created from raw/ sources
 
-All 3 PDFs and the iso-merging codebase have been processed into `wiki/ai/`:
+All 3 PDFs and the iso-merging codebase have been processed into `wiki/model-merging/`:
 
 | Page | Source(s) |
 |------|-----------|
-| `wiki/ai/model-merging.md` | all 3 PDFs, iso-merging/ |
-| `wiki/ai/task-vectors.md` | 2412.00081, 2502.04959, 2503.18063 |
-| `wiki/ai/task-interference.md` | 2412.00081, 2502.04959 |
-| `wiki/ai/subspace-alignment.md` | 2502.04959 |
-| `wiki/ai/task-singular-vectors.md` | 2412.00081, iso-merging/ |
-| `wiki/ai/isotropic-model-merging.md` | 2502.04959, iso-merging/ |
-| `wiki/ai/dynamic-task-vector-grouping.md` | 2503.18063 |
+| `wiki/model-merging/model-merging.md` | all 3 PDFs, iso-merging/ |
+| `wiki/model-merging/task-vectors.md` | 2412.00081, 2502.04959, 2503.18063 |
+| `wiki/model-merging/task-interference.md` | 2412.00081, 2502.04959 |
+| `wiki/model-merging/subspace-alignment.md` | 2502.04959 |
+| `wiki/model-merging/task-singular-vectors.md` | 2412.00081, iso-merging/ |
+| `wiki/model-merging/isotropic-model-merging.md` | 2502.04959, iso-merging/ |
+| `wiki/model-merging/dynamic-task-vector-grouping.md` | 2503.18063 |
 
 PDF identities confirmed:
 - `raw/2412.00081v3.pdf` — "Task Singular Vectors" (Gargiulo et al., Sapienza, arXiv 2412.00081)
@@ -39,36 +39,53 @@ The following methods are mentioned across multiple pages but have no dedicated 
 
 ---
 
-## 2026-04-07 — Wiki audit
+## 2026-04-08 — Processing run
 
-### Fix: stale index header
+### New raw files
 
-`wiki/model-merging/index.md` still has the old title and heading from when the topic was `ai/`. Change:
-- frontmatter `title:` → `Model Merging — Topic Index`
-- `# AI` → `# Model Merging`
-- summary blockquote → something specific to model merging
+`raw/clippings/The Synthetic Data Playbook...md` — page failed to load when scraped (body is just "Refreshing"). No usable content. Re-scrape or fetch the URL manually when you want to process this.
 
-### Pages to expand
+### Completed from prior audit
 
-**`task-vectors.md`** (thinnest content page) is missing the full algebra of task vectors from the original Task Arithmetic paper:
-- Negation: `-τ` forgets a task (the merged model degrades on it)
-- Composition: task vectors from unrelated tasks can be added; from conflicting tasks they cancel
-- These operations motivate why interference matters and make the page self-contained
+- Fixed stale `wiki/ai/` paths in HUMAN.md (now `wiki/model-merging/`)
+- Fixed stale index header in `wiki/model-merging/_index.md`
+- Added Task Arithmetic algebra (negation, composition, cancellation) to `task-vectors.md`
+- Expanded TIES and Consensus Merging descriptions in `model-merging.md`
 
-**`model-merging.md`** describes TIES Merging and Consensus Merging in one line each with no mechanism. Until they get their own pages, expand those entries here with at least a sentence on how each works.
+### Still open
 
-### No merge candidates
+**Verify isotropic results** — `isotropic-model-merging.md` uses `~89%` and `~87%` for Iso-CTS at 8 and 14 tasks (ViT-L/14). Confirm exact figures from Table 1 of `raw/2502.04959v3.pdf`. PDFs are not readable in the current environment; do this manually.
 
-All seven pages cover distinct enough concepts. `subspace-alignment` and `task-interference` are complementary perspectives on the same problem but are already cross-linked and clearly delineated — keep separate.
+**TIES and Consensus pages** — Both methods appear in multiple pages but have no dedicated page. Worth adding when you encounter the original papers:
+- TIES: Yadav et al., 2023 (arXiv 2306.01708)
+- Consensus: Wang et al., 2024
 
-### No missing backlinks
+**Topical misfit** — `dynamic-task-vector-grouping.md` is about multi-task prompt tuning, not weight-space merging. Move to a `prompt-tuning/` topic if you add more PEFT/prompt-tuning papers.
 
-Automated check confirmed all declared backlinks match actual outgoing links across all pages.
+**Possible self-citation** — DTVG paper (2503.18063) cites "Belanec et al., 2024" as concurrent work on task prompt vectors. Check if this is your own prior work and link if so.
 
-### Topical misfit to watch
+---
 
-`dynamic-task-vector-grouping.md` is about multi-task **prompt tuning**, not weight-space model merging. It sits in `model-merging/` because the 3-page rule prevents creating `prompt-tuning/` yet. If you add more prompt-tuning or PEFT papers, move it then.
+## 2026-04-08 — Wiki audit
 
-### Approximate results in isotropic-model-merging.md
+### Backlinks
 
-The results table uses `~89%` and `~87%` for Iso-CTS at 8 and 14 tasks. Verify exact figures from Table 1 of `raw/2502.04959v3.pdf` and update.
+All backlinks are correct and complete. Automated check confirmed no missing or stale entries across all seven pages.
+
+Fixed one structural gap: `dynamic-task-vector-grouping.md` linked to `task-singular-vectors` and `isotropic-model-merging` in its body but omitted them from See Also. Added.
+
+### Merge candidates
+
+None. All seven pages cover distinct enough concepts. `subspace-alignment` and `task-interference` are the closest pair but are clearly delineated (SAR measures representation coverage; STI measures direct singular vector overlap) and already cross-linked.
+
+### Stubs to expand
+
+**`dynamic-task-vector-grouping.md`** — the Knowledge Consistency (KC) metric is named and described in prose ("penalizes conflicts between source tasks") but never defined. The paper must give a formula. Worth adding when you re-read 2503.18063.
+
+**`subspace-alignment.md`** — shortest page (57 lines). Correct but thin. Could add:
+- Practical interpretation: what does a SAR of 0.3 vs 0.8 imply for merged accuracy?
+- Per-task SAR breakdown for the 8-task CLIP benchmark (which tasks have low vs high SAR under Task Arithmetic?) — figures in 2502.04959
+
+### Approximate results (still open)
+
+`isotropic-model-merging.md` results table uses `~89%` and `~87%` for Iso-CTS at 8 and 14 tasks on ViT-L/14. The 20-task figure (90.1%) appears exact. Verify all three from Table 1 of `raw/2502.04959v3.pdf` manually.
